@@ -3,7 +3,7 @@
 declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: 'development' | 'production';
-    REACT_APP_NOTION_ACCESS_TOKEN: string;
-    REACT_APP_NOTION_DATABASE_ID: string;
+    REACT_APP_OPENAI_API_KEY: string;
+    REACT_APP_TMDB_API_KEY: string;
   }
 }
