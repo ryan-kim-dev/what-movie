@@ -1,18 +1,10 @@
 import axios from 'axios';
 
-export const getMovies = async () => {
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/550?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-  );
+const BASE_URL = 'https://what-movie-server.vercel.app';
 
-  return response.data;
-};
-
+/** openai api에게 영화 추천 요청 수행과 응답으로 프라미스를 리턴 */
 export const getMovieRecommendations = async (prompt: string) => {
-  const response = await axios.post(
-    'https://what-movie-server.vercel.app/recommendations',
-    prompt
-  );
+  const response = await axios.post(`${BASE_URL}/recommendations`, prompt);
 
   return response.data;
 };
