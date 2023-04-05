@@ -7,3 +7,13 @@ export const getMovies = async () => {
 
   return response.data;
 };
+
+// export const queryToOpenai = async ({ prompt }: any) => {
+//   try {
+//     const response = await axios.post(`/recommendations`, { prompt });
+
+//     return response.data;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
