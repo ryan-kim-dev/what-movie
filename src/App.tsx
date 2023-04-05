@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { getMovieRecommendations } from './apis/apis';
 // import { getMovies, queryToOpenai } from './apis/apis';
 
 // const Header = () => {
@@ -15,23 +15,21 @@ import { useEffect, useState } from 'react';
 // };
 
 function App() {
-  const [prompt, setPrompt] = useState<string>('');
-  const [response, setResponse] = useState<any>('');
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [response, setResponse] = useState<string>('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    axios
-      .post('https://what-movie-server.vercel.app/recommendations', { prompt })
-      .then((res) => {
-        setResponse(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    if (inputRef.current?.value) {
+      const response = await getMovieRecommendations(inputRef.current.value);
+      setResponse(response);
+      inputRef.current.value = '';
+    } else {
+      alert('값을 입력해주세요');
+    }
   };
 
-  useEffect(() => {
-    // getMovies().then((res) => console.log(res));
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -39,16 +37,18 @@ function App() {
       <Input /> */}
       <div>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="">
+          <label htmlFor="prompt-input">
             <input
               type="text"
-              onChange={(e) => setPrompt(e.target.value)}
               placeholder="ex) 스트레스 풀기 좋은"
+              id="prompt-input"
+              ref={inputRef}
             />
           </label>
           <button type="submit">영화를 추천해줘</button>
         </form>
       </div>
+      <pre>{response}</pre>
     </>
   );
 }

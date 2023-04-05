@@ -8,12 +8,11 @@ export const getMovies = async () => {
   return response.data;
 };
 
-// export const queryToOpenai = async ({ prompt }: any) => {
-//   try {
-//     const response = await axios.post(`/recommendations`, { prompt });
+export const getMovieRecommendations = async (prompt: string) => {
+  const response = await axios.post(
+    'https://what-movie-server.vercel.app/recommendations',
+    prompt
+  );
 
-//     return response.data;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
+  return response.data;
+};
