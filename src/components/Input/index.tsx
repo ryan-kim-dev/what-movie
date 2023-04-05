@@ -24,7 +24,7 @@ function Input() {
         <label htmlFor="prompt-input">
           <input
             type="text"
-            placeholder="ex) 스트레스 풀기 좋은"
+            placeholder="스트레스 풀기 좋은"
             id="prompt-input"
             ref={inputRef}
           />
