@@ -34,7 +34,11 @@ function Banner() {
           <button className="info">영화 정보</button>
         </div>
 
-        <p className="description">{truncateTexts(movie.overview, 100)}</p>
+        {truncateTexts(movie.overview, 100)
+          ?.split('. ')
+          .map((line: string, index: number) => (
+            <p key={index}>{line}</p>
+          ))}
 
         <div className="fade-bottom" />
       </Content>
