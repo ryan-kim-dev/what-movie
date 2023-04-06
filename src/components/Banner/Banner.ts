@@ -50,8 +50,7 @@ export const Header = styled.header<InputProps>`
       : 'none'};
   background-position: top center;
   background-size: cover;
-
-  color: #fff;
+  color: rgba(255, 255, 255, 0.4);
   object-fit: contain;
   height: 448px;
   width: 100vw;
@@ -76,6 +75,10 @@ export const Content = styled.div`
   width: 100%;
   z-index: 1;
   display: flex;
+
+  h1 {
+    color: #fff;
+  }
 
   .content-position {
     position: absolute;

@@ -35,7 +35,7 @@ function Input() {
               ref={inputRef}
             />
           </label>
-          <Button type="submit">영화를 추천해줘</Button>
+          <Button type="submit">영화 추천해줘</Button>
         </div>
       </Form>
     </>
@@ -52,6 +52,7 @@ const Form = styled.form`
   align-items: center;
   width: 100%;
   height: 100%;
+  font-size: 2rem;
 
   img {
     width: 100px;
@@ -60,21 +61,28 @@ const Form = styled.form`
 
   .input-wrapper {
     z-index: 1;
-    /* opacity: 0.9; */
-    display: flex;
+
     @media (max-width: 480px) {
       flex-direction: column;
+
+      input {
+        width: 150px;
+      }
     }
   }
 
   input {
-    padding: 10px;
+    width: 300px;
+    padding: 20px;
     opacity: 0.9;
+    border: none;
   }
 `;
 
 const Button = styled.button`
   background: linear-gradient(to right, #ff4f5c, #2eadfd);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
   border: none;
-  padding: 11px;
+  padding: 20px;
 `;
