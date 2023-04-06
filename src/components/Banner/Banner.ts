@@ -30,7 +30,6 @@ export const Iframe = styled.iframe`
   width: 100%;
   height: 100%;
   z-index: -1;
-  /* opacity: 0.65; */
   border: none;
 
   &::after {

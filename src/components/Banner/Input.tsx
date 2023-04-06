@@ -52,26 +52,33 @@ const Form = styled.form`
   align-items: center;
   width: 100%;
   height: 100%;
-  font-size: 2rem;
 
   img {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
   }
 
   .input-wrapper {
     z-index: 1;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @media (max-width: 480px) {
       flex-direction: column;
+    }
+  }
 
-      input {
-        width: 150px;
-      }
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    input {
+      width: 150px;
+      padding: 10px;
     }
   }
 
   input {
+    font-size: 1.5rem;
     width: 300px;
     padding: 20px;
     opacity: 0.9;
@@ -80,9 +87,14 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
+  font-size: 1.5rem;
   background: linear-gradient(to right, #ff4f5c, #2eadfd);
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
   border: none;
-  padding: 20px;
+  padding: 20px 40px;
+
+  @media (max-width: 480px) {
+    padding: 10px 20px;
+  }
 `;
