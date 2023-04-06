@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ResultSection = styled.section`
-  background-color: black;
+  background-color: transparent;
 `;
 
 export const ResultList = styled.ul`

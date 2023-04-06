@@ -6,6 +6,7 @@ import { ResultSection, ResultList, ResultItem } from './Results';
 
 function Results() {
   const [searchedMovies, setSearchedMovies]: any = useState([]);
+
   const recommendations = useSelector(
     (state: any) => state.recommendation.recommendations,
     (prev, next) => JSON.stringify(prev) === JSON.stringify(next)
@@ -17,6 +18,8 @@ function Results() {
     .map((movie: string) => movie.replace(/\s*\(.+?\)\s*/, ''));
 
   useEffect(() => {
+    console.log('fired');
+
     const fetchMoviesArray = async () => {
       const movies = await Promise.all(
         moviesArray.map(async (movieTitle: string) => {
@@ -28,8 +31,7 @@ function Results() {
     };
     if (moviesArray.length !== 0 && searchedMovies.length === 0)
       fetchMoviesArray();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [moviesArray]);
+  }, [moviesArray, searchedMovies]);
 
   return (
     // moviesArray를 이용하여 검색 결과를 렌더링

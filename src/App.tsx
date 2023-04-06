@@ -1,5 +1,5 @@
 import GlobalStyles from './GlobalStyles';
-import { Nav, Banner, Results, Footer } from './components';
+import { Nav, Banner, Results } from './components';
 
 function App() {
   return (
@@ -8,7 +8,6 @@ function App() {
       <Nav />
       <Banner />
       <Results />
-      <Footer />
     </>
   );
 }
