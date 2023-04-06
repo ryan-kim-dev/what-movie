@@ -33,7 +33,7 @@ export const Iframe = styled.iframe`
   /* opacity: 0.65; */
   border: none;
 
-  &: after {
+  &::after {
     content: '';
     position: absolute;
     top: 0;
