@@ -77,6 +77,9 @@ export const Content = styled.div`
 
   h1 {
     color: #fff;
+    font-size: 2rem;
+    letter-spacing: 1.2px;
+    z-index: -1;
   }
 
   .content-position {
@@ -85,10 +88,14 @@ export const Content = styled.div`
     bottom: 10%;
   }
 
-  h1 {
-    font-size: 2rem;
-    letter-spacing: 1.2px;
-    z-index: -1;
+  @media (max-width: 480px) {
+    p {
+      display: none;
+    }
+
+    .content-position {
+      top: 15%;
+    }
   }
 `;
 
@@ -109,9 +116,5 @@ export const Buttons = styled.div`
   }
 
   .info {
-  }
-
-  @media (max-width: 480px) {
-    flex-direction: column;
   }
 `;
