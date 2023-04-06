@@ -10,6 +10,7 @@ export const tmdbInstance = axios.create({
 
 /** TMDB API 요청들 */
 export const requests = {
+  fetchSearchResult: '/search/movie',
   fetchNowPlaying: '/movie/now_playing',
   fetchNetflixOriginals: '/discover/tv?_networks=213',
   fetchTrending: '/trending/all/week',

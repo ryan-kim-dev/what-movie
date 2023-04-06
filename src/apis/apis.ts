@@ -30,3 +30,14 @@ export const getRandomMovie = async () => {
 
   return movieDetail;
 };
+
+/** openai 추천 영화를 tmdb에서 검색한 상세정보를 받아오는 함수 */
+export const getSearchedMovie = async (movieTitle: string) => {
+  const response = await tmdbInstance.get(requests.fetchSearchResult, {
+    params: {
+      query: movieTitle,
+    },
+  });
+
+  return response.data.results[0];
+};

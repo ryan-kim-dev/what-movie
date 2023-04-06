@@ -1,5 +1,5 @@
 import GlobalStyles from './GlobalStyles';
-import { Nav, Banner, Row, Footer } from './components';
+import { Nav, Banner, Results, Footer } from './components';
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <GlobalStyles />
       <Nav />
       <Banner />
-      <Row />
+      <Results />
       <Footer />
     </>
   );
