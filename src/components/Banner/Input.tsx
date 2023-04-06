@@ -59,13 +59,17 @@ const Form = styled.form`
   }
 
   .input-wrapper {
+    z-index: 1;
+    /* opacity: 0.9; */
     display: flex;
     @media (max-width: 480px) {
       flex-direction: column;
+    }
   }
 
   input {
     padding: 10px;
+    opacity: 0.9;
   }
 `;
 
