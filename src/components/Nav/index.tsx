@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import logo from '../../assets/logo.svg';
-import { Navbar, Spacer } from './Nav';
+import { Navbar } from './Nav';
 
 function Nav() {
   const [show, setshow] = useState(false);
@@ -28,7 +28,6 @@ function Nav() {
       <Navbar show={show}>
         <img src={logo} alt="logo" />
       </Navbar>
-      <Spacer />
     </>
   );
 }

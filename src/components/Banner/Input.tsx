@@ -1,22 +1,23 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { getRecommendations } from '../../apis/apis';
 
 function Input() {
+  // Input 컴포넌트의 뒷 배경 이미지의 영화 정보 state
+  // 영화 추천 키워드 input의 ref
   const inputRef = useRef<HTMLInputElement>(null);
-  const [response, setResponse] = useState<string>('');
+  // recommendations : opeanai 추천 영화 목록의 state
+  const [recommendations, setRecommendations] = useState<string>('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputRef.current?.value) {
       const response = await getRecommendations(inputRef.current.value);
-      setResponse(response);
+      setRecommendations(response);
       inputRef.current.value = '';
     } else {
       alert('값을 입력해주세요');
     }
   };
-
-  useEffect(() => {}, []);
 
   return (
     <>
@@ -32,7 +33,7 @@ function Input() {
         <button type="submit">영화를 추천해줘</button>
       </form>
 
-      <pre>{response}</pre>
+      <pre>{recommendations}</pre>
     </>
   );
 }

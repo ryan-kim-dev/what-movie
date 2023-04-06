@@ -1,12 +1,12 @@
 import GlobalStyles from './GlobalStyles';
-import { Nav, Input, Row, Footer } from './components';
+import { Nav, Banner, Row, Footer } from './components';
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Nav />
-      <Input />
+      <Banner />
       <Row />
       <Footer />
     </>
