@@ -12,7 +12,7 @@ function Banner() {
   };
 
   const truncateTexts = (text: string, limit: number) => {
-    return text.length > limit ? text.substr(0, limit - 1) + '...' : text;
+    return text?.length > limit ? text.substr(0, limit - 1) + '...' : text;
   };
 
   useEffect(() => {

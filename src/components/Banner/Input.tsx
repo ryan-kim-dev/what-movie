@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { getRecommendations } from '../../apis/apis';
+import styled from 'styled-components';
 
 function Input() {
   // Input 컴포넌트의 뒷 배경 이미지의 영화 정보 state
