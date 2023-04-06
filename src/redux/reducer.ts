@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: '',
+  recommendations: '',
 };
 
 export const recommendationSlice = createSlice({
@@ -9,7 +9,7 @@ export const recommendationSlice = createSlice({
   initialState,
   reducers: {
     setRecommendation: (state, action) => {
-      state.value = action.payload;
+      state.recommendations = action.payload;
     },
   },
 });

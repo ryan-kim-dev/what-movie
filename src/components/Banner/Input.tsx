@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getRecommendations } from '../../apis/apis';
 import { setRecommendation } from '../../redux/reducer';
 import styled from 'styled-components';
@@ -10,9 +10,6 @@ function Input() {
   const inputRef = useRef<HTMLInputElement>(null);
   // 타 컴포넌트로 추천목록을 보내기 위한 redux의 dispatch
   const dispatch = useDispatch();
-  const recommendations = useSelector(
-    (state: any) => state.recommendations?.value
-  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,8 +38,6 @@ function Input() {
           <Button type="submit">영화를 추천해줘</Button>
         </div>
       </Form>
-
-      <pre>{recommendations}</pre>
     </>
   );
 }
@@ -50,7 +45,6 @@ function Input() {
 export default Input;
 
 const Form = styled.form`
-  opacity: 0.9;
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
