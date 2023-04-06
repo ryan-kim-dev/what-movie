@@ -11,6 +11,10 @@ function Banner() {
     setMovie(response);
   };
 
+  const truncateTexts = (text: string, limit: number) => {
+    return text.length > limit ? text.substr(0, limit - 1) + '...' : text;
+  };
+
   useEffect(() => {
     parseMovieDetail();
   }, []);
@@ -30,7 +34,7 @@ function Banner() {
           <button className="info">영화 정보</button>
         </div>
 
-        <p className="description">{movie.overview}</p>
+        <p className="description">{truncateTexts(movie.overview, 100)}</p>
 
         <div className="fade-bottom" />
       </Content>
