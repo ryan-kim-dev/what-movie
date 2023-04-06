@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getSearchedMovie } from '../../apis/apis';
+import { ResultSection, ResultList, ResultItem } from './Results';
 
 function Results() {
   const [searchedMovies, setSearchedMovies]: any = useState([]);
@@ -32,20 +33,22 @@ function Results() {
 
   return (
     // moviesArray를 이용하여 검색 결과를 렌더링
-    <>
-      {searchedMovies.length !== 0 &&
-        searchedMovies.map((movie: any) => (
-          <div key={Math.random()}>
-            <h3>{movie && movie.title}</h3>
-            <img
-              src={`https://image.tmdb.org/t/p/original/${
-                movie && movie.backdrop_path
-              }`}
-              alt=""
-            />
-          </div>
-        ))}
-    </>
+    <ResultSection>
+      <ResultList>
+        {searchedMovies.length !== 0 &&
+          searchedMovies.map((movie: any) => (
+            <ResultItem key={Math.random()}>
+              <img
+                src={`https://image.tmdb.org/t/p/original/${
+                  movie && movie.backdrop_path
+                }`}
+                alt="movie poster"
+              />
+              <h3>{movie && movie.title}</h3>
+            </ResultItem>
+          ))}
+      </ResultList>
+    </ResultSection>
   );
 }
 
