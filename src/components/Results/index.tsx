@@ -3,25 +3,32 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getSearchedMovie } from '../../apis/apis';
 import { ResultSection, ResultList, ResultItem } from './Results';
+import { MovieModalProps } from '../../types';
 
 function Results() {
-  const [searchedMovies, setSearchedMovies]: any = useState([]);
+  const [searchedMovies, setSearchedMovies] = useState<MovieModalProps[]>([]);
   const [openModal, setOpenModal] = useState(false);
 
-  const handleItemClick = () => {
+  /** 추천 영화 클릭 시 상세정보 모달 팝업 onClick 핸들러 */
+  const handleItemClick = (movie: MovieModalProps) => {
+    console.log(movie);
     setOpenModal((prev: boolean) => !prev);
   };
 
+  /** redux store의 추천 영화 목록 state를 가져오기 위한 useSelector */
   const recommendations = useSelector(
-    (state: any) => state.recommendation.recommendations,
+    (state: { recommendation: { recommendations: string } }) =>
+      state.recommendation.recommendations,
     (prev, next) => JSON.stringify(prev) === JSON.stringify(next)
   );
 
-  const moviesArray = recommendations
+  /** 추천 영화 목록 전체의 string에서 각각의 영화를 요소로 분리한 배열로 변환 */
+  const moviesArray: string[] = recommendations
     .split(/\d+\.\s+/)
     .slice(1)
     .map((movie: string) => movie.replace(/\s*\(.+?\)\s*/, ''));
 
+  /** 추천 영화 목록을 이용하여 영화 검색 후 화면에 렌더링 */
   useEffect(() => {
     console.log('fired');
 
@@ -39,12 +46,14 @@ function Results() {
   }, [moviesArray, searchedMovies]);
 
   return (
-    // moviesArray를 이용하여 검색 결과를 렌더링
     <ResultSection>
       <ResultList>
         {searchedMovies.length !== 0 &&
-          searchedMovies.map((movie: any) => (
-            <ResultItem key={Math.random()} onClick={handleItemClick}>
+          searchedMovies.map((movie: MovieModalProps) => (
+            <ResultItem
+              key={Math.random()}
+              onClick={() => handleItemClick(movie)}
+            >
               <img
                 src={`https://image.tmdb.org/t/p/original/${
                   movie && movie.backdrop_path
