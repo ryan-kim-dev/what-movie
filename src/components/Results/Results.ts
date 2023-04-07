@@ -14,6 +14,7 @@ export const ResultList = styled.ul`
 `;
 
 export const ResultItem = styled.li`
+  cursor: pointer;
   width: 25%;
   padding: 1rem;
   display: flex;

@@ -6,6 +6,11 @@ import { ResultSection, ResultList, ResultItem } from './Results';
 
 function Results() {
   const [searchedMovies, setSearchedMovies]: any = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleItemClick = () => {
+    setOpenModal((prev: boolean) => !prev);
+  };
 
   const recommendations = useSelector(
     (state: any) => state.recommendation.recommendations,
@@ -39,7 +44,7 @@ function Results() {
       <ResultList>
         {searchedMovies.length !== 0 &&
           searchedMovies.map((movie: any) => (
-            <ResultItem key={Math.random()}>
+            <ResultItem key={Math.random()} onClick={handleItemClick}>
               <img
                 src={`https://image.tmdb.org/t/p/original/${
                   movie && movie.backdrop_path

@@ -104,10 +104,11 @@ export const Buttons = styled.div`
   margin: 5px;
   width: max-content;
   height: max-content;
+
   button {
     font-size: 13px;
     border: none;
-    /* opacity: 0.9; */
+    cursor: pointer;
   }
 
   .play {

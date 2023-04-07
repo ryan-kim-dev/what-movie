@@ -88,6 +88,7 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
+  cursor: pointer;
   font-size: 1.5rem;
   background: linear-gradient(to right, #ff4f5c, #2eadfd);
   color: #fff;
