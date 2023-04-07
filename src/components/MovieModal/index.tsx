@@ -1,12 +1,44 @@
 import { searchedMovieProps } from '../../types';
+import { AiOutlineClose } from 'react-icons/ai';
+import {
+  ModalWrapper,
+  ModalCloseButton,
+  ModalPoster,
+  ModalContent,
+  ModalTitle,
+  ModalDetails,
+  ModalOverview,
+  ModalUserScore,
+} from './MovieModal';
 
-interface MovieModalProps {
-  movie?: searchedMovieProps;
-  setModalOpen?: (movie: searchedMovieProps) => void;
-}
-
-function MovieModal({ movie, setModalOpen }: MovieModalProps) {
-  return <div>MovieModal</div>;
+function MovieModal({
+  backdrop_path,
+  title,
+  overview,
+  release_date,
+  vote_average,
+  setOpenModal,
+}: searchedMovieProps) {
+  return (
+    <ModalWrapper>
+      <ModalContent>
+        <ModalCloseButton onClick={() => setOpenModal(false)}>
+          <AiOutlineClose />
+        </ModalCloseButton>
+        <ModalPoster
+          src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+          alt="selected movie poster"
+        />
+        <ModalDetails>
+          <ModalUserScore>추천도: 100% </ModalUserScore>
+          {release_date}
+        </ModalDetails>
+        <ModalTitle>{title}</ModalTitle>
+        <ModalOverview>평점: {vote_average}</ModalOverview>
+        <ModalOverview>{overview}</ModalOverview>
+      </ModalContent>
+    </ModalWrapper>
+  );
 }
 
 export default MovieModal;

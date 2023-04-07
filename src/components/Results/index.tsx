@@ -70,8 +70,8 @@ function Results() {
             ))}
         </ResultList>
       </ResultSection>
-      {openModal && (
-        <MovieModal movie={selectedMovie} setModalOpen={handleItemClick} />
+      {openModal && selectedMovie?.title && (
+        <MovieModal {...selectedMovie} setOpenModal={setOpenModal} />
       )}
     </>
   );

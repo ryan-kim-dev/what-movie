@@ -47,4 +47,5 @@ export interface searchedMovieProps {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
