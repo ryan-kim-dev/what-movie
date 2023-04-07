@@ -15,6 +15,7 @@ function MovieModal({
   backdrop_path,
   title,
   overview,
+  popularity,
   release_date,
   vote_average,
   setOpenModal,
@@ -30,7 +31,7 @@ function MovieModal({
           alt="selected movie poster"
         />
         <ModalDetails>
-          <ModalUserScore>추천도: 100% </ModalUserScore>
+          <ModalUserScore>추천도: {popularity}% </ModalUserScore>
           {release_date}
         </ModalDetails>
         <ModalTitle>{title}</ModalTitle>

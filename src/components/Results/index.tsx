@@ -34,8 +34,6 @@ function Results() {
 
   /** 추천 영화 목록을 이용하여 영화 검색 후 화면에 렌더링 */
   useEffect(() => {
-    console.log('fired');
-
     const fetchMoviesArray = async () => {
       const movies = await Promise.all(
         moviesArray.map(async (movieTitle: string) => {
