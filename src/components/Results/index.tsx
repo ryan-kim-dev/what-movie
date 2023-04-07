@@ -3,16 +3,20 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getSearchedMovie } from '../../apis/apis';
 import { ResultSection, ResultList, ResultItem } from './Results';
-import { MovieModalProps } from '../../types';
+import { searchedMovieProps } from '../../types';
+import MovieModal from '../MovieModal';
 
 function Results() {
-  const [searchedMovies, setSearchedMovies] = useState<MovieModalProps[]>([]);
+  const [searchedMovies, setSearchedMovies] = useState<searchedMovieProps[]>(
+    []
+  );
   const [openModal, setOpenModal] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState<searchedMovieProps>();
 
   /** 추천 영화 클릭 시 상세정보 모달 팝업 onClick 핸들러 */
-  const handleItemClick = (movie: MovieModalProps) => {
-    console.log(movie);
+  const handleItemClick = (movie: searchedMovieProps) => {
     setOpenModal((prev: boolean) => !prev);
+    setSelectedMovie(movie);
   };
 
   /** redux store의 추천 영화 목록 state를 가져오기 위한 useSelector */
@@ -46,45 +50,31 @@ function Results() {
   }, [moviesArray, searchedMovies]);
 
   return (
-    <ResultSection>
-      <ResultList>
-        {searchedMovies.length !== 0 &&
-          searchedMovies.map((movie: MovieModalProps) => (
-            <ResultItem
-              key={Math.random()}
-              onClick={() => handleItemClick(movie)}
-            >
-              <img
-                src={`https://image.tmdb.org/t/p/original/${
-                  movie && movie.backdrop_path
-                }`}
-                alt="movie poster"
-              />
-              <h3>{movie && movie.title}</h3>
-            </ResultItem>
-          ))}
-      </ResultList>
-    </ResultSection>
+    <>
+      <ResultSection>
+        <ResultList>
+          {searchedMovies.length !== 0 &&
+            searchedMovies.map((movie: searchedMovieProps) => (
+              <ResultItem
+                key={Math.random()}
+                onClick={() => handleItemClick(movie)}
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${
+                    movie && movie.backdrop_path
+                  }`}
+                  alt="movie poster"
+                />
+                <h3>{movie && movie.title}</h3>
+              </ResultItem>
+            ))}
+        </ResultList>
+      </ResultSection>
+      {openModal && (
+        <MovieModal movie={selectedMovie} setModalOpen={handleItemClick} />
+      )}
+    </>
   );
 }
 
 export default Results;
-
-/**
- {
-  adult, 
-  backdrop_path, 
-  genre_ids, 
-  id, 
-  original_language, 
-  original_title, 
-  overview, 
-  popularity, 
-  poster_path, 
-  release_date, 
-  title, 
-  video, 
-  vote_average, 
-  vote_count
-}
- */

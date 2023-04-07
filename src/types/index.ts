@@ -32,7 +32,7 @@ export interface MovieDetails {
   vote_count: number;
 }
 
-export interface MovieModalProps {
+export interface searchedMovieProps {
   adult: boolean;
   backdrop_path: string;
   genre_ids: [];
